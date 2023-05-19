@@ -21,15 +21,3 @@ class Species(db.Model):
     sightings: so.WriteOnlyMapped["Sighting"] = so.relationship(
         back_populates="species"
     )
-    animals: so.WriteOnlyMapped["Animal"] = so.relationship(back_populates="species")
-
-
-class Animal(db.Model):
-    __tablename__ = "animals"
-
-    id: so.Mapped[int] = so.mapped_column(primary_key=True)
-    name: so.Mapped[str] = so.mapped_column(sa.String(120), index=True, unique=True)
-    species_id: so.Mapped[int] = so.mapped_column(
-        sa.ForeignKey("species.id"), index=True
-    )
-    species: so.Mapped["Species"] = so.relationship(back_populates="animals")
