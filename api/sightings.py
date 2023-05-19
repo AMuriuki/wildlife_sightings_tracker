@@ -2,7 +2,7 @@ from apifairy.decorators import other_responses
 from flask import Blueprint, abort
 from apifairy import authenticate, body, response
 from api.decorators import paginated_response
-from api.models import Sighting
+from api.models import Sighting, Species
 from api.schemas import SightingSchema
 from api.app import db
 
@@ -23,3 +23,13 @@ def get(id):
 def all():
     """Retrieve all sightings"""
     return Sighting.select()
+
+
+@sightings.route("/sightings/<int:species_id>", methods=["GET"])
+@paginated_response(
+    sighting_schema, order_by=Sighting.last_seen, order_direction="desc"
+)
+def get_by_species(species_id):
+    """Retrieves sightings by species"""
+    species = db.session.get(Species, species_id) or abort(404)
+    return species.sightings.select()

@@ -16,7 +16,7 @@ class Sighting(db.Model):
     species: so.Mapped["Species"] = so.relationship(back_populates="sightings")
 
     def __repr__(self):
-        return "<Sighting {}>".format(self.species)
+        return "<Sighting {}>".format(self.id)
 
     @property
     def url(self):
