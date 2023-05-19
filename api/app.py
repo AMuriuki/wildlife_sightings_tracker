@@ -23,6 +23,10 @@ def create_app(config_class=Config):
     ma.init_app(app)
     apifairy.init_app(app)
 
+    from api.dummy import dummy
+
+    app.register_blueprint(dummy)
+
     @app.route("/")
     def index():
         return redirect(url_for("apifairy.docs"))
