@@ -29,7 +29,11 @@ def create_app(config_class=Config):
 
     from api.sightings import sightings
 
-    app.register_blueprint(sightings, url_prefix='/api')
+    app.register_blueprint(sightings, url_prefix="/api")
+
+    from api.species import species
+
+    app.register_blueprint(species, url_prefix="/api")
 
     @app.route("/")
     def index():
