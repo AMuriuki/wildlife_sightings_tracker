@@ -10,7 +10,7 @@ class Config:
     # DB configuration
     ALCHEMICAL_DATABASE_URL = os.environ.get(
         "DATABASE_URL"
-    ) or "sqlite:///" + os.path.join(basedir, "wildlife_sightings.sql")
+    ) or "sqlite:///" + os.path.join(basedir, "wildlife_sightings.sqlite")
 
     APIFAIRY_TITLE = "Wildlife Sightings Tracker API"
     APIVERSION = "1.0"
