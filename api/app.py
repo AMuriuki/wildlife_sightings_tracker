@@ -27,6 +27,10 @@ def create_app(config_class=Config):
 
     app.register_blueprint(dummy)
 
+    from api.sightings import sightings
+
+    app.register_blueprint(sightings, url_prefix='/api')
+
     @app.route("/")
     def index():
         return redirect(url_for("apifairy.docs"))

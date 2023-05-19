@@ -2,6 +2,7 @@ from datetime import datetime
 from api.app import db
 from sqlalchemy import orm as so
 import sqlalchemy as sa
+from flask import url_for
 
 
 class Sighting(db.Model):
@@ -14,6 +15,13 @@ class Sighting(db.Model):
     )
     species: so.Mapped["Species"] = so.relationship(back_populates="sightings")
 
+    def __repr__(self):
+        return "<Sighting {}>".format(self.species)
+
+    @property
+    def url(self):
+        return url_for("sightings.get", id=self.id)
+
 
 class Species(db.Model):
     id: so.Mapped[int] = so.mapped_column(primary_key=True)
@@ -21,3 +29,10 @@ class Species(db.Model):
     sightings: so.WriteOnlyMapped["Sighting"] = so.relationship(
         back_populates="species"
     )
+
+    def __repr__(self):
+        return "<Species {}>".format(self.title)
+
+    @property
+    def url(self):
+        return url_for("species.get", id=self.id)
