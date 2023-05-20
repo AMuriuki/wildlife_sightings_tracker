@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Card({ heading, description, tableData }) {
+export default function Card({ heading, description, tableData, columnNames, currentPage }) {
     return (
         <>
             <div className="card mb-3 mt-3">
@@ -26,15 +26,18 @@ export default function Card({ heading, description, tableData }) {
                             <table className="table table-striped fs--1 mb-0 overflow-hidden">
                                 <thead className="bg-200 text-900">
                                     <tr>
-                                        <th className="sort pe-1 align-middle white-space-nowrap">Species</th>
-                                        <th className="sort pe-1 align-middle white-space-nowrap">Last Seen</th>
+                                        {columnNames.map((columnName, index) => (
+                                            <th key={index} className="sort pe-1 align-middle white-space-nowrap">{columnName}</th>
+                                        ))}
                                     </tr>
                                 </thead>
                                 <tbody className="list" id="table-purchase-body">
                                     {tableData.map((row, index) => (
                                         <tr key={row.id} className="btn-reveal-trigger">
                                             <th className="align-middle white-space-nowrap">
-                                                <a href="/details">{row.species}</a>
+                                                {currentPage === "Sightings" ? (
+                                                    <a href="/details">{row.species}</a>) : (<a target="_blank" href={row.image}>View</a>
+                                                )}
                                             </th>
                                             <td className="align-middle white-space-nowrap email">
                                                 {row.last_seen}

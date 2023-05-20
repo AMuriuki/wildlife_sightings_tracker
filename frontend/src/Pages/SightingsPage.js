@@ -72,11 +72,13 @@ export default function SightingsPage() {
         return uniqueSpecies
     }, []);
 
+    const columnNames = ["Species", "Last Seen"]
+
     return (
         <Body>
             <Card
                 heading="Sightings"
-                description="Animal sightings"
+                description="Select animal to view its sightings or add a new sighting"
                 tableData={speciesList.map(species => {
                     const speciesSightings = sightings.data.filter(sighting => sighting.species.id === species.id);
                     const lastSeen = speciesSightings[0].last_seen;
@@ -84,8 +86,9 @@ export default function SightingsPage() {
                         species: species.title,
                         last_seen: lastSeen
                     }
-                })
-                }
+                })}
+                columnNames={columnNames}
+                currentPage="Sightings"
             />
         </Body>
     )

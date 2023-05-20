@@ -14,7 +14,8 @@ export default function DetailsPage() {
                     "title": "Zebra",
                     "url": "/api/species/5"
                 },
-                "url": "/api/sighting/5"
+                "url": "/api/sighting/5",
+                "image": "https://animals.sandiegozoo.org/sites/default/files/2016-08/hero_zebra_animals.jpg"
             },
             {
                 "id": 4,
@@ -25,7 +26,8 @@ export default function DetailsPage() {
                     "title": "Zebra",
                     "url": "/api/species/5"
                 },
-                "url": "/api/sighting/4"
+                "url": "/api/sighting/4",
+                "image": "https://www.earthandanimals.com/files/547756/catitems/Zebra2-939b212484e1f17c03b24c7c307b0619.jpg"
             }
         ],
         "pagination": {
@@ -36,13 +38,18 @@ export default function DetailsPage() {
         }
     }
 
+    const columnNames = ["Image", "Seen"]
+
     return (
         <Body>
             <Card
+                heading={details.data[0].species.title + " sightings"}
                 tableData={details.data.map(details => ({
-                    species: details.species.title,
+                    image: details.image,
                     last_seen: details.last_seen
                 }))}
+                columnNames={columnNames}
+                currentPage="Details"
             />
         </Body>
     )
