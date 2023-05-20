@@ -6,13 +6,15 @@ export default function Navbar({ children }) {
             <div className="d-flex align-items-center">
                 {children}
             </div>
-            <div className="collapse navbar-collapse" id="navbarVerticalCollapse">
+            <div className="collapse navbar-collapse">
                 <div className="navbar-vertical-content scrollbar">
-                    <ul className="navbar-nav flex-column mb-3" id="navbarVerticalNav">
+                    <ul className="navbar-nav flex-column mb-3">
                         <li className="nav-item">
                             <a className="nav-link" href="/" role="button">
                                 <div className="d-flex align-items-center">
-                                    <span className="nav-link-text ps-1">Sightings</span>
+                                    <span className="nav-link-text ps-1">
+                                        Sightings
+                                    </span>
                                 </div>
                             </a>
                         </li>

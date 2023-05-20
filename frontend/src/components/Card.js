@@ -34,7 +34,7 @@ export default function Card({ heading, description, tableData }) {
                                     {tableData.map((row, index) => (
                                         <tr key={row.id} className="btn-reveal-trigger">
                                             <th className="align-middle white-space-nowrap">
-                                                <a href="/">{row.species}</a>
+                                                <a href="/details">{row.species}</a>
                                             </th>
                                             <td className="align-middle white-space-nowrap email">
                                                 {row.last_seen}

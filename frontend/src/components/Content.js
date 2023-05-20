@@ -5,5 +5,5 @@ export default function Content({ children }) {
         <div className="content">
             {children}
         </div>
-    )
+    );
 }
