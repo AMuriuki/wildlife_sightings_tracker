@@ -1,7 +1,8 @@
 import Container from './components/Container';
 import Navbar from './components/Navbar/Navbar';
-import NavbarToggle from './components/Navbar/NavbarToggle';
 import NavbarBrand from './components/Navbar/NavbarBrand';
+import Card from './components/Card';
+import Content from './components/Content';
 
 export default function App() {
   const sightings = {
@@ -68,9 +69,18 @@ export default function App() {
   return (
     <Container>
       <Navbar>
-        <NavbarToggle />
         <NavbarBrand />
       </Navbar>
+      <Content>
+        <Card
+          heading="Sightings"
+          description="Animal sightings"
+          tableData={sightings.data.map(sighting => ({
+            species: sighting.species.title,
+            last_seen: sighting.last_seen
+          }))}
+        />
+      </Content>
     </Container>
   );
 }
