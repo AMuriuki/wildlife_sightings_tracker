@@ -1,5 +1,7 @@
 import Container from 'react-bootstrap/Container';
+import Stack from 'react-bootstrap/Stack';
 import Header from './components/Header';
+import Sidebar from './components/Sidebar';
 
 export default function App() {
   const sightings = {
@@ -66,15 +68,21 @@ export default function App() {
   return (
     <Container fluid className="App">
       <Header />
-      <h1>Wildlife Sightings Tracker</h1>
-      <ul>
-        {sightings.data.map(element => {
-          return <li key={element.id}>{element.species.title}</li>
-        })}
-      </ul>
-      {sightings.data.length === 0 &&
-        <p>There is nothing to show here</p>
-      }
+      <Container fluid>
+        <Stack direction="horizontal">
+          <Sidebar />
+          <Container fluid>
+            <ul>
+              {sightings.data.map(element => {
+                return <li key={element.id}>{element.species.title}</li>
+              })}
+            </ul>
+            {sightings.data.length === 0 &&
+              <p>There is nothing to show here</p>
+            }
+          </Container>
+        </Stack>
+      </Container>
     </Container>
   );
 }
