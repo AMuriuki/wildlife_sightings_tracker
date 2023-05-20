@@ -1,3 +1,4 @@
+import Container from 'react-bootstrap/Container';
 
 export default function App() {
   const sightings = {
@@ -62,7 +63,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <Container fluid className="App">
       <h1>Wildlife Sightings Tracker</h1>
       <ul>
         {sightings.data.map(element => {
@@ -72,6 +73,6 @@ export default function App() {
       {sightings.data.length === 0 &&
         <p>There is nothing to show here</p>
       }
-    </>
+    </Container>
   );
 }
