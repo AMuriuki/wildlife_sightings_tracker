@@ -66,6 +66,15 @@ export default function App() {
     }
   }
 
+  // create a unique list of species
+  const speciesList = sightings.data.reduce((uniqueSpecies, sighting) => {
+    const { id, title } = sighting.species;
+    if (!uniqueSpecies.find(species => species.id === id)) {
+      uniqueSpecies.push({ id, title });
+    }
+    return uniqueSpecies
+  }, []);
+
   return (
     <Container>
       <Navbar>
@@ -75,10 +84,15 @@ export default function App() {
         <Card
           heading="Sightings"
           description="Animal sightings"
-          tableData={sightings.data.map(sighting => ({
-            species: sighting.species.title,
-            last_seen: sighting.last_seen
-          }))}
+          tableData={speciesList.map(species => {
+            const speciesSightings = sightings.data.filter(sighting => sighting.species.id === species.id);
+            const lastSeen = speciesSightings[0].last_seen;
+            return {
+              species: species.title,
+              last_seen: lastSeen
+            }
+          })
+          }
         />
       </Content>
     </Container>
