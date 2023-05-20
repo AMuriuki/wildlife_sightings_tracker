@@ -1,7 +1,7 @@
-import Container from 'react-bootstrap/Container';
-import Stack from 'react-bootstrap/Stack';
-import Header from './components/Header';
-import Sidebar from './components/Sidebar';
+import Container from './components/Container';
+import Navbar from './components/Navbar/Navbar';
+import NavbarToggle from './components/Navbar/NavbarToggle';
+import NavbarBrand from './components/Navbar/NavbarBrand';
 
 export default function App() {
   const sightings = {
@@ -66,23 +66,11 @@ export default function App() {
   }
 
   return (
-    <Container fluid className="App">
-      <Header />
-      <Container fluid>
-        <Stack direction="horizontal">
-          <Sidebar />
-          <Container fluid>
-            <ul>
-              {sightings.data.map(element => {
-                return <li key={element.id}>{element.species.title}</li>
-              })}
-            </ul>
-            {sightings.data.length === 0 &&
-              <p>There is nothing to show here</p>
-            }
-          </Container>
-        </Stack>
-      </Container>
+    <Container>
+      <Navbar>
+        <NavbarToggle />
+        <NavbarBrand />
+      </Navbar>
     </Container>
   );
 }
