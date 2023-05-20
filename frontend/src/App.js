@@ -1,25 +1,77 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+export default function App() {
+  const sightings = {
+    "data": [
+      {
+        "id": 1,
+        "last_seen": "2022-04-12T19:45:46.865997",
+        "species": {
+          "id": 1,
+          "title": "Lion",
+          "url": "/api/species/1"
+        },
+        "url": "/api/sighting/1"
+      },
+      {
+        "id": 2,
+        "last_seen": "2022-06-24T18:54:23.276090",
+        "species": {
+          "id": 2,
+          "title": "Tiger",
+          "url": "/api/species/2"
+        },
+        "url": "/api/sighting/2"
+      },
+      {
+        "id": 3,
+        "last_seen": "2022-08-09T13:49:35.506910",
+        "species": {
+          "id": 4,
+          "title": "Giraffe",
+          "url": "/api/species/4"
+        },
+        "url": "/api/sighting/3"
+      },
+      {
+        "id": 4,
+        "last_seen": "2022-05-21T03:27:23.520357",
+        "species": {
+          "id": 5,
+          "title": "Zebra",
+          "url": "/api/species/5"
+        },
+        "url": "/api/sighting/4"
+      },
+      {
+        "id": 5,
+        "last_seen": "2022-11-05T20:21:26.333512",
+        "species": {
+          "id": 5,
+          "title": "Zebra",
+          "url": "/api/species/5"
+        },
+        "url": "/api/sighting/5"
+      }
+    ],
+    "pagination": {
+      "count": 5,
+      "limit": 25,
+      "offset": 0,
+      "total": 5
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Wildlife Sightings Tracker</h1>
+      <ul>
+        {sightings.data.map(element => {
+          return <li key={element.id}>{element.species.title}</li>
+        })}
+      </ul>
+      {sightings.data.length === 0 &&
+        <p>There is nothing to show here</p>
+      }
+    </>
   );
 }
-
-export default App;
