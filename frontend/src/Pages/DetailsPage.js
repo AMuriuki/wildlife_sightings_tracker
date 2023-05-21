@@ -1,5 +1,6 @@
 import Body from "../components/Body";
 import Card from "../components/Card";
+import TimeAgo from "../components/TimeAgo";
 
 export default function DetailsPage() {
 
@@ -46,7 +47,7 @@ export default function DetailsPage() {
                 heading={details.data[0].species.title + " sightings"}
                 tableData={details.data.map(details => ({
                     image: details.image,
-                    last_seen: details.last_seen
+                    last_seen: <TimeAgo isoDate={details.last_seen} />
                 }))}
                 columnNames={columnNames}
                 currentPage="Details"

@@ -1,5 +1,6 @@
 import Body from "../components/Body";
 import Card from "../components/Card";
+import TimeAgo from "../components/TimeAgo";
 
 export default function SightingsPage() {
     const sightings = {
@@ -84,7 +85,7 @@ export default function SightingsPage() {
                     const lastSeen = speciesSightings[0].last_seen;
                     return {
                         species: species.title,
-                        last_seen: lastSeen
+                        last_seen: <TimeAgo isoDate={lastSeen} />
                     }
                 })}
                 columnNames={columnNames}
