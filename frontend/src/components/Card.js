@@ -14,12 +14,12 @@ export default function Card({ heading, description, tableData, columnNames, cur
                     </div>
                 </div>
             </div>
-            <div className="card mb-3">
+            {currentPage === "Sightings" || currentPage === "Details" ? (<div className="card mb-3">
                 <div className="card-body pt-0 px-0">
                     <div className="d-flex align-items-center justify-content-end my-3">
                         <div className="d-flex">
                             <input className="form-control form-control-sm shadow-none search" type="search" placeholder="Search by species..." aria-label="search" />
-                            <a className="btn btn-falcon-success btn-sm mx-3">+ New Sighting</a>
+                            <a href="/new" className="btn btn-falcon-success btn-sm mx-3">+ New Sighting</a>
                         </div>
                     </div>
                     <div id="tableExample4">
@@ -49,7 +49,23 @@ export default function Card({ heading, description, tableData, columnNames, cur
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>) : (<div className="card mb-3">
+                <div className="card-body bg-light">
+                    <form>
+                        <div className="mb-3">
+                            <label className="form-label" htmlFor="date-of-sighting">
+                                Date of Sighting
+                            </label>
+                            <input className="form-control" id="date-of-sighting" type="date"></input>
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Upload Image</label>
+                            <input className="form-control" type="file"></input>
+                        </div>
+                        <button className="btn btn-primary" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>)}
         </>
     );
 }

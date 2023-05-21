@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import Modal from "../components/Modal";
 
 export default function ImagePopup({ index, imageUrl }) {
@@ -6,7 +5,7 @@ export default function ImagePopup({ index, imageUrl }) {
     return (
         <>
             <a
-                href="#"
+                href="?"
                 className="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target={"#modal-" + index.toString()}
