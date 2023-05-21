@@ -1,4 +1,5 @@
 import React from "react";
+import ImagePopup from "../components/ImagePopup";
 
 export default function Card({ heading, description, tableData, columnNames, currentPage }) {
     return (
@@ -15,10 +16,10 @@ export default function Card({ heading, description, tableData, columnNames, cur
             </div>
             <div className="card mb-3">
                 <div className="card-body pt-0 px-0">
-                    <div class="d-flex align-items-center justify-content-end my-3">
-                        <div class="d-flex">
-                            <input class="form-control form-control-sm shadow-none search" type="search" placeholder="Search by species..." aria-label="search" />
-                            <a class="btn btn-falcon-success btn-sm mx-3">+ New Sighting</a>
+                    <div className="d-flex align-items-center justify-content-end my-3">
+                        <div className="d-flex">
+                            <input className="form-control form-control-sm shadow-none search" type="search" placeholder="Search by species..." aria-label="search" />
+                            <a className="btn btn-falcon-success btn-sm mx-3">+ New Sighting</a>
                         </div>
                     </div>
                     <div id="tableExample4">
@@ -31,13 +32,12 @@ export default function Card({ heading, description, tableData, columnNames, cur
                                         ))}
                                     </tr>
                                 </thead>
-                                <tbody className="list" id="table-purchase-body">
+                                <tbody className="list">
                                     {tableData.map((row, index) => (
-                                        <tr key={row.id} className="btn-reveal-trigger">
+                                        <tr key={index} className="btn-reveal-trigger">
                                             <th className="align-middle white-space-nowrap">
                                                 {currentPage === "Sightings" ? (
-                                                    <a href="/details">{row.species}</a>) : (<a target="_blank" href={row.image}>View</a>
-                                                )}
+                                                    <a href="/details">{row.species}</a>) : (<ImagePopup index={index} imageUrl={row.image} />)}
                                             </th>
                                             <td className="align-middle white-space-nowrap email">
                                                 {row.last_seen}
