@@ -22,9 +22,10 @@ class SightingSchema(ma.SQLAlchemySchema):
 
     id = ma.auto_field(dump_only=True)
     url = ma.String(dump_only=True)
-    last_seen = ma.auto_field(dump_only=True)
-    image = ma.String(dump_only=True)
+    last_seen = ma.auto_field(required=True)
+    image = ma.String(required=True)
     species = ma.Nested(SpeciesSchema, dump_only=True)
+    species_id = ma.Integer(required=True, load_only=True)
 
 
 class StringPaginationSchema(ma.Schema):

@@ -33,3 +33,14 @@ def get_by_species(species_id):
     """Retrieves sightings by species"""
     species = db.session.get(Species, species_id) or abort(404)
     return species.sightings.select()
+
+
+@sightings.route("/sightings/", methods=["POST"])
+@body(sighting_schema)
+@response(sighting_schema, 201)
+def new(args):
+    """Create a new sighting"""
+    sighting = Sighting(**args)
+    db.session.add(sighting)
+    db.session.commit()
+    return "sighting"
