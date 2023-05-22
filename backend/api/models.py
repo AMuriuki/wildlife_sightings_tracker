@@ -14,6 +14,7 @@ class Sighting(db.Model):
         sa.ForeignKey("species.id"), index=True
     )
     species: so.Mapped["Species"] = so.relationship(back_populates="sightings")
+    image: so.Mapped[str] = so.mapped_column(sa.String(200))
 
     def __repr__(self):
         return "<Sighting {}>".format(self.id)

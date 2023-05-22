@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 23bb8c2a8c65
+Revision ID: 1edbe99bbfa5
 Revises: 
-Create Date: 2023-05-19 09:44:29.013111
+Create Date: 2023-05-22 09:35:18.771490
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '23bb8c2a8c65'
+revision = '1edbe99bbfa5'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,21 +26,11 @@ def upgrade():
     with op.batch_alter_table('species', schema=None) as batch_op:
         batch_op.create_index(batch_op.f('ix_species_title'), ['title'], unique=True)
 
-    op.create_table('animals',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=120), nullable=False),
-    sa.Column('species_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['species_id'], ['species.id'], name=op.f('fk_animals_species_id_species')),
-    sa.PrimaryKeyConstraint('id', name=op.f('pk_animals'))
-    )
-    with op.batch_alter_table('animals', schema=None) as batch_op:
-        batch_op.create_index(batch_op.f('ix_animals_name'), ['name'], unique=True)
-        batch_op.create_index(batch_op.f('ix_animals_species_id'), ['species_id'], unique=False)
-
     op.create_table('sightings',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('last_seen', sa.DateTime(), nullable=False),
     sa.Column('species_id', sa.Integer(), nullable=False),
+    sa.Column('image', sa.String(length=200), nullable=False),
     sa.ForeignKeyConstraint(['species_id'], ['species.id'], name=op.f('fk_sightings_species_id_species')),
     sa.PrimaryKeyConstraint('id', name=op.f('pk_sightings'))
     )
@@ -56,11 +46,6 @@ def downgrade():
         batch_op.drop_index(batch_op.f('ix_sightings_species_id'))
 
     op.drop_table('sightings')
-    with op.batch_alter_table('animals', schema=None) as batch_op:
-        batch_op.drop_index(batch_op.f('ix_animals_species_id'))
-        batch_op.drop_index(batch_op.f('ix_animals_name'))
-
-    op.drop_table('animals')
     with op.batch_alter_table('species', schema=None) as batch_op:
         batch_op.drop_index(batch_op.f('ix_species_title'))
 

@@ -6,7 +6,7 @@
         },
         {
             "id": 2,
-            "title": "Tiger"
+            "title": "Monkey"
         },
         {
             "id": 3,
@@ -19,28 +19,61 @@
         {
             "id": 5,
             "title": "Zebra"
+        },
+        {
+            "id": 6,
+            "title": "Cheetah"
+        },
+        {
+            "id": 7,
+            "title": "Hippo"
+        },
+        {
+            "id": 8,
+            "title": "Rhino"
+        },
+        {
+            "id": 9,
+            "title": "Leopard"
+        },
+        {
+            "id": 10,
+            "title": "Buffalo"
+        },
+        {
+            "id": 11,
+            "title": "Warthog"
+        },
+        {
+            "id": 12,
+            "title": "Hyena"
         }
     ],
     "sightings": [
         {
             "id": 1,
-            "species_id": 1
+            "species_id": 1,
+            "image": "https://cdn.britannica.com/30/150930-050-51878468/lion-Namibia.jpg"
         },
         {
             "id": 2,
-            "species_id": 2
+            "species_id": 2,
+            "image": "https://destinationuganda.com/wp-content/uploads/2020/05/vervet-001.jpg"
         },
         {
             "id": 3,
-            "species_id": 4
+            "species_id": 4,
+            "image": "https://i.natgeofe.com/k/e7ba8001-23ac-457f-aedb-abd5f2fdda62/moms5.png"
         },
         {
             "id": 4,
-            "species_id": 5
+            "species_id": 5,
+            "image": "https://animals.sandiegozoo.org/sites/default/files/2016-08/hero_zebra_animals.jpg"
         },
         {
             "id": 5,
-            "species_id": 5
+            "species_id": 5,
+            "image": "https://www.animalspot.net/wp-content/uploads/2022/03/Zebra.jpg"
         }
     ]
 }

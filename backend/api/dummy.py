@@ -12,10 +12,10 @@ dummy = Blueprint("dummy", __name__)
 
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
-year = 2022  # specifiy desired year
+year = 2023  # specifiy desired year
 
 start_date = datetime(year, 1, 1)
-end_date = datetime(year + 1, 1, 1) - timedelta(seconds=1)
+end_date = datetime.now()
 
 
 def random_date():
@@ -35,7 +35,11 @@ def load_data():
 
     for item in sightings:
         if not db.session.get(Sighting, item["id"]):
-            sighting = Sighting(species_id=item["species_id"], last_seen=random_date())
+            sighting = Sighting(
+                species_id=item["species_id"],
+                last_seen=random_date(),
+                image=item["image"],
+            )
             db.session.add(sighting)
 
     db.session.commit()

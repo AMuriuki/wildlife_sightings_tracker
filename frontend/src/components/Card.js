@@ -1,7 +1,7 @@
 import React from "react";
 import ImagePopup from "../components/ImagePopup";
 
-export default function Card({ heading, description, tableData, columnNames, currentPage }) {
+export default function Card({ heading, description, tableData, columnNames, currentPage, species }) {
     return (
         <>
             <div className="card mb-3 mt-3">
@@ -37,7 +37,7 @@ export default function Card({ heading, description, tableData, columnNames, cur
                                         <tr key={index} className="btn-reveal-trigger">
                                             <th className="align-middle white-space-nowrap">
                                                 {currentPage === "Sightings" ? (
-                                                    <a href="/details">{row.species}</a>) : (<ImagePopup index={index} imageUrl={row.image} />)}
+                                                    <a href={"/details/" + row.species.id}>{row.species.title}</a>) : (<ImagePopup index={index} imageUrl={row.image} />)}
                                             </th>
                                             <td className="align-middle white-space-nowrap email">
                                                 {row.last_seen}
@@ -57,6 +57,15 @@ export default function Card({ heading, description, tableData, columnNames, cur
                                 Date of Sighting
                             </label>
                             <input className="form-control" id="date-of-sighting" type="date"></input>
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label" htmlFor="select-species">
+                                Species
+                            </label>
+                            <select className="form-select" id="select-species">
+                                <option defaultValue="selected">Select species</option>
+                                {species}
+                            </select>
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Upload Image</label>

@@ -10,7 +10,7 @@ export default function App() {
       <ApiProvider>
         <Routes>
           <Route path='/' element={<SightingsPage />} />
-          <Route path='/details' element={<DetailsPage />} />
+          <Route path='/details/:speciesId' element={<DetailsPage />} />
           <Route path='/new' element={<NewSightingPage />} />
           <Route path='*' element={<Navigate to='/' />} />
         </Routes>

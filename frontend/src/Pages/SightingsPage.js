@@ -43,7 +43,7 @@ export default function SightingsPage() {
                     );
                     const lastSeen = speciesSightings[0]?.last_seen;
                     return {
-                        species: species.title,
+                        species: species,
                         last_seen: <TimeAgo isoDate={lastSeen} />
                     };
                 })}
