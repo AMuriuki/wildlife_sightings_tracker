@@ -50,6 +50,11 @@ $ cd frontend
 
 2. Install Node.js and npm if not already installed
 
+3. create and populate the `.env` file.
+```bash
+$ echo "REACT_APP_BASE_API_URL=http://localhost:5000" > .env
+```
+
 3. Install the project dependencies:
 ```bash
 $ npm install
@@ -58,9 +63,7 @@ $ npm install
 4. Start the development server:
 ```bash
 $ npm start
-```
-
-5. 
+``` 
 
 ## Usage
 Once both the backend and frontend servers are running, you can interact with the application by accessing http://localhost:3000 in your web browser. The frontend communicates with the backend through API endpoints provided by the Flask server.
