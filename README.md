@@ -33,7 +33,17 @@ $ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
-6. Run the development server
+6. Run DB migrations
+```bash
+$ flask db upgrade #(uses sqlite as default DB)
+```
+
+7. Seed DB with dummy data
+```bash
+$ flask dummy load-data
+```
+
+8. Run the development server
 ```bash
 $ flask run
 ```
