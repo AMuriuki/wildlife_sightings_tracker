@@ -1,5 +1,5 @@
 # Wildlife Sightings Tracker
-This repository contains the code for a project with separate directories for the backend and frontend components. The backend is built using Flask, a Python web framework, while the frontend is developed using JavaScript.
+This repository contains the code for a project with separate directories for the backend and frontend components. The backend is built using Flask, a Python web framework, while the frontend is developed using React Js.
 
 ## Installation
 ### Backend
