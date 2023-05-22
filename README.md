@@ -5,12 +5,12 @@ This repository contains the code for a project with separate directories for th
 ### Backend
 1. Clone the repository: 
 ```bash
-$ https://github.com/AMuriuki/wildlife_sightings_tracker
+$ git clone https://github.com/AMuriuki/wildlife_sightings_tracker
 ```
 
 2. Navigate to the backend directory
 ```bash
-$ cd backend
+$ cd wildlife_sightings_tracker/backend
 ```
 
 3. Create a virtual environment
@@ -55,7 +55,7 @@ Open a different terminal and follow these steps:
 
 1. Navigate to the frontend directory: 
 ```bash
-$ cd frontend
+$ cd wildlife_sightings_tracker/frontend
 ```
 
 2. Install Node.js and npm if not already installed
