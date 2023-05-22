@@ -1,7 +1,7 @@
 import React from "react";
 import ImagePopup from "../components/ImagePopup";
 
-export default function Card({ heading, description, tableData, columnNames, currentPage, species }) {
+export default function Card({ heading, description, tableData, columnNames, currentPage, species, onSubmit }) {
     return (
         <>
             <div className="card mb-3 mt-3">
@@ -18,7 +18,6 @@ export default function Card({ heading, description, tableData, columnNames, cur
                 <div className="card-body pt-0 px-0">
                     <div className="d-flex align-items-center justify-content-end my-3">
                         <div className="d-flex">
-                            <input className="form-control form-control-sm shadow-none search" type="search" placeholder="Search by species..." aria-label="search" />
                             <a href="/new" className="btn btn-falcon-success btn-sm mx-3">+ New Sighting</a>
                         </div>
                     </div>
@@ -51,12 +50,12 @@ export default function Card({ heading, description, tableData, columnNames, cur
                 </div>
             </div>) : (<div className="card mb-3">
                 <div className="card-body bg-light">
-                    <form>
+                    <form onSubmit={onSubmit}>
                         <div className="mb-3">
                             <label className="form-label" htmlFor="date-of-sighting">
                                 Date of Sighting
                             </label>
-                            <input className="form-control" id="date-of-sighting" type="date"></input>
+                            <input className="form-control" id="date-of-sighting" type="date" required  ></input>
                         </div>
                         <div className="mb-3">
                             <label className="form-label" htmlFor="select-species">
@@ -68,8 +67,8 @@ export default function Card({ heading, description, tableData, columnNames, cur
                             </select>
                         </div>
                         <div className="mb-3">
-                            <label className="form-label">Upload Image</label>
-                            <input className="form-control" type="file"></input>
+                            <label className="form-label">Image Address</label>
+                            <input id="image-file" className="form-control" type="text"></input>
                         </div>
                         <button className="btn btn-primary" type="submit">Submit</button>
                     </form>
