@@ -40,6 +40,7 @@ def get_by_species(species_id):
 @response(sighting_schema, 201)
 def new(args):
     """Create a new sighting"""
+    print("!!!!!!!")
     sighting = Sighting(**args)
     db.session.add(sighting)
     db.session.commit()
